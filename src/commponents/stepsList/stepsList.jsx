@@ -1,10 +1,6 @@
-import styles from "../buttonList/buttonList.module.css";
+import styles from "./stepsList.module.css";
 
-export default function ButtonList({ steps, activeIndex, setActiveIndex }) {
-  function handleClick(index) {
-    setActiveIndex(index);
-  }
-
+export default function StepList({ steps, activeIndex, onClick }) {
   return (
     <>
       <ul className={styles["steps-list"]}>
@@ -12,12 +8,12 @@ export default function ButtonList({ steps, activeIndex, setActiveIndex }) {
           <li
             className={`${styles["steps-item"]} ${
               index === activeIndex ? styles.active : ""
-            }`}
+            } ${index < activeIndex ? styles.done : ""}`}
             key={item.id}
           >
             <button
               className={styles["steps-item-button"]}
-              onClick={() => handleClick(index)}
+              onClick={() => onClick(index)}
             >
               {index + 1}
             </button>
