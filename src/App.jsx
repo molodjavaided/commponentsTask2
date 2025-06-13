@@ -16,20 +16,13 @@ export const App = () => {
 
   const handleBack = () => {
     if (!isFirstStep) {
-      setActiveIndex((index) => {
-        index - 1;
-      });
+      setActiveIndex((index) => index - 1);
     }
   };
 
   const handleNext = () => {
-    if (isLastStep) {
-      setActiveIndex(0);
-    } else {
-      setActiveIndex((prev) => prev + 1);
-    }
+    isLastStep ? setActiveIndex(0) : setActiveIndex((prev) => prev + 1);
   };
-
   const isLastStep = activeIndex === steps.length - 1;
   const isFirstStep = activeIndex === 0;
 
